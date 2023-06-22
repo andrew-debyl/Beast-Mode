@@ -1,12 +1,22 @@
-const nums = [1, 2, 4, 9]
-const target = 13
+const nums = [1, 2, 3, 4]
 
-const map = new Map();
+const leftProduct = [];
+const rightProduct = [];
+const arr = [];
 
-for (let i = 0; i < nums.length; ++i) {
-  map.set(nums[i], true)
+leftProduct[0] = 1;
+rightProduct[nums.length - 1] = 1;
 
-  if (nums[i] === 9) {
-    console.log(map.get(4)) // O(1) time
-  }
+for (let i = 1; i < nums.length; i++) {
+  leftProduct[i] = nums[i - 1] * leftProduct[i - 1];
 }
+
+for (let i = nums.length - 2; i >= 0; i--) {
+  rightProduct[i] = nums[i + 1] * rightProduct[i + 1];
+}
+
+for (let i = 0; i < nums.length; i++) {
+  arr[i] = leftProduct[i] * rightProduct[i];
+}
+
+console.log(leftProduct, rightProduct, arr)
