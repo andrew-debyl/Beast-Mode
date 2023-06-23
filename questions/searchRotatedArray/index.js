@@ -14,7 +14,19 @@
  */
 
 const search = (nums, target) => {
+    let l = 0
+    let r = nums.length - 1
 
+    while (l < r) {
+        let mid = Math.floor((l + r) / 2)
+
+        if (target < nums[mid] || target > nums[r]) {
+            r = mid - 1
+        }
+        else {
+            l = mid + 1
+        }
+    }
 }
 
 module.exports = search;

@@ -11,7 +11,18 @@
  */
 
  const meetingTimes = (times) => {
+    times.sort((a, b) => a - b)
+    
+    for (let i = 1; i < times.length; i++) {
+        let currArr = times[i]
+        let prevArr = times[i-1]
 
+        if (currArr[0] < prevArr[1]) {
+            return false
+        }
+    }
+
+    return true
  };
 
 module.exports = meetingTimes;

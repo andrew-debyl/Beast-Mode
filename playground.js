@@ -1,22 +1,16 @@
-const nums = [1, 2, 3, 4]
+const nums = [21, 40 , 99, 102, 1102, 18, 20]
 
-const leftProduct = [];
-const rightProduct = [];
-const arr = [];
+let l = 0;
+let r = nums.length - 1;
 
-leftProduct[0] = 1;
-rightProduct[nums.length - 1] = 1;
-
-for (let i = 1; i < nums.length; i++) {
-  leftProduct[i] = nums[i - 1] * leftProduct[i - 1];
+while (l <= r) {
+  let mid = Math.floor((l + r) / 2);
+console.log(l, mid, r)
+  if (mid < r) {
+    r = mid;
+  } else if (mid > r) {
+    l = mid + 1;
+  } else {
+    return nums[mid];
+  }
 }
-
-for (let i = nums.length - 2; i >= 0; i--) {
-  rightProduct[i] = nums[i + 1] * rightProduct[i + 1];
-}
-
-for (let i = 0; i < nums.length; i++) {
-  arr[i] = leftProduct[i] * rightProduct[i];
-}
-
-console.log(leftProduct, rightProduct, arr)
